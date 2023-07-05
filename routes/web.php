@@ -56,6 +56,7 @@ Route::group(['middleware' => 'auth:user'], function () {
     Route::POST('addToCart', [UserController::class, 'addToCart'])->name('addToCart');
     Route::get('getMyCart', [UserController::class, 'getMyCart'])->name('getMyCart');
     Route::POST('deleteFromMyCart', [UserController::class, 'deleteFromMyCart'])->name('deleteFromMyCart');
+    Route::POST('updateCart', [UserController::class, 'updateCart'])->name('updateCart');
 
     // Wishlist handle
     Route::POST('addToWishlist', [UserController::class, 'addToWishlist'])->name('addToWishlist');

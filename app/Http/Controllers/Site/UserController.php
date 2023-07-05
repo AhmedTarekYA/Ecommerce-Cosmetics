@@ -93,7 +93,7 @@ class UserController extends Controller
 
     public function getMyCart(){
         $cart_elements = Cart::where('user_id', loggedUser('id'))
-            ->with('product')->latest()->take('5')->get();
+            ->with('product')->latest()->take('10')->get();
         if($cart_elements->count() == 0)
             return view('Site/User/Empty-Cart');
         else
@@ -117,6 +117,25 @@ class UserController extends Controller
                 'count'   => $count
             ]);
         }
+    }
+
+    public function updateCart(request $request){
+        Cart::where('user_id',loggedUser('id'))->get()->each->delete();
+        $data = null;
+        $data['user_id'] = loggedUser('id');
+        foreach ($request->product_id as $key => $pro_id){
+            $product = Product::find($pro_id);
+            $data['product_id'] = $product->id;
+            if($product->price_after != 0)
+                $data['price'] = $product->price_after;
+            else
+                $data['price'] = $product->price_before;
+
+            $data['qty'] = $request->qty[$key];
+            $data['price'] = $data['price'] * $data['qty'];
+            Cart::create($data);
+        }
+        return response()->json(['status' => 200,]);
     }
     ///////////////
 

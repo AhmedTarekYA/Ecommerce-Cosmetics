@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 23, 2023 at 12:10 AM
+-- Generation Time: Jul 05, 2023 at 10:37 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -107,6 +107,13 @@ CREATE TABLE `carts` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `carts`
+--
+
+INSERT INTO `carts` (`id`, `product_id`, `user_id`, `qty`, `price`, `created_at`, `updated_at`) VALUES
+(98, 17, 2, 1, '120', '2023-07-05 19:09:13', '2023-07-05 19:09:13');
 
 -- --------------------------------------------------------
 
@@ -488,7 +495,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `image`, `name`, `email`, `password`, `address`, `remember_token`, `created_at`, `updated_at`) VALUES
-(2, 'assets/uploads/users/54601686176252.webp', 'احمد طارق عباس يحيي', 'ahmedtarekya100@gmail.com', '$2y$10$VFfdLY1jHZaBnLHhbOkWxeYsTXQIBi04Ie3OYO/ydGHzDv5KThSXW', 'المنوفية شبين الكوم البتانون امام مول الحاج عبودة العشماوي مباشرة شقة 212', NULL, '2023-06-07 21:17:33', '2023-06-07 21:17:33'),
+(2, 'assets/uploads/users/59351688575048.webp', 'احمد طارق عباس يحيي', 'ahmedtarekya100@gmail.com', '$2y$10$2elt8kKUaeBDd33wgdIHr.pg./SibSaalPfZUMew68RnjJ5E6KXse', 'المنوفية شبين الكوم البتانون امام مول الحاج عبودة العشماوي مباشرة شقة 212', NULL, '2023-06-07 21:17:33', '2023-07-05 15:37:28'),
 (3, NULL, 'محمد علي كامل', 'mohamed@gmail.com', '$2y$10$i0QXoo5hjjDvShXWu/Q6SeIxe44shY1AbADsxPq.LqHEjz5Mya6ru', 'الغربية محل الامل شارع 20', NULL, '2023-06-22 15:33:35', '2023-06-22 15:33:35'),
 (4, 'assets/uploads/users/22141687452165.webp', 'محمد ناصر كامل علي', 'nasser@gmail.com', '$2y$10$oSaShHnya3cQ8OxvGKWJhe9dVHpZjDtP3xq.11fbOMisvLtklVo8.', 'منوف المنوفيه شارع 87', NULL, '2023-06-22 15:42:46', '2023-06-22 15:42:46');
 
@@ -652,7 +659,7 @@ ALTER TABLE `brands`
 -- AUTO_INCREMENT for table `carts`
 --
 ALTER TABLE `carts`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=68;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=99;
 
 --
 -- AUTO_INCREMENT for table `categories`

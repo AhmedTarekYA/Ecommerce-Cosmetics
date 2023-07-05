@@ -17,7 +17,7 @@ class OrderController extends Controller
     public function checkout()
     {
         $cart_elements = Cart::where('user_id', loggedUser('id'))
-            ->with('product')->latest()->take('5')->get();
+            ->with('product')->latest()->take('10')->get();
         return view('Site.Order.checkout',compact('cart_elements'));
     }
 

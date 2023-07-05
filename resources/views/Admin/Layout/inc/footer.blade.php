@@ -7,7 +7,7 @@
             </div>
             <div class="col-sm-6">
                 <div class="text-sm-end d-none d-sm-block">
-                    حقوق النشر © {{date('Y')}} جميع الحقوق محفوظة <a href="https://romoz.co" target="_blank">ROMOZ ❤️</a>
+                    حقوق النشر © 2023 جميع الحقوق محفوظة <a href="https://rynprogramming.com/" target="_blank">RYN.Tech ❤️</a>
                 </div>
             </div>
         </div>
