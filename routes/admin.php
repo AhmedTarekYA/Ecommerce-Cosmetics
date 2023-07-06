@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\BlogController;
 use App\Http\Controllers\Admin\BrandController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\ContactUsController;
+use App\Http\Controllers\Admin\HomeController;
 use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\SettingController;
@@ -31,7 +32,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth:admin'], function () {
     Route::get('logout', 'AuthController@logout')->name('admin.logout');
 
     #### Home ####
-    Route::view('/', 'Admin/index')->name('adminHome');
+    Route::get('/', [HomeController::class,'index'])->name('adminHome');
 
     #### Admins ####
     Route::resource('admins', AdminController::class);

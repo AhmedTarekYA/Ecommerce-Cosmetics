@@ -121,7 +121,7 @@
                         @foreach($categories as $category)
                             <div class="slick-single-layout slick-slide">
                                 <div class="categrie-product categrie-product-3" data-sal="zoom-out" data-sal-delay="100" data-sal-duration="500">
-                                    <a href="#">
+                                    <a href="{{route('productPage','category='.$category->title)}}">
                                         <img class="img-fluid" src="{{getFile($category->image)}}" style="width: 64px;height: 64px;" alt="product categorie">
                                         <h6 class="cat-title">{{$category->title}}</h6>
                                     </a>
@@ -157,20 +157,30 @@
                                         @endif
 
                                         <div class="product-hover-action">
-                                            <ul class="cart-action">
-{{--                                                <li class="quickview"><a href="#" data-bs-toggle="modal" data-bs-target="#quick-view-modal"><i class="far fa-eye"></i></a></li>--}}
-                                                <li class="wishlist add-to-cart" data-id="{{$product->id}}"><a href="javascript:void(0)"><i class="far fa-shopping-cart" title="اضف للسلة"></i></a></li>
-                                                <li class="select-option">
-                                                    <a href="{{route('productDetails',$product->title)}}">
-                                                        عرض التفاصيل
-                                                    </a>
-                                                </li>
-                                                <li class="wishlist add-to-wishlist" data-id="{{$product->id}}">
-                                                    <a href="javascript:void(0)" title="اضف للمفضلة">
-                                                        <i class="far fa-heart"></i>
-                                                    </a>
-                                                </li>
-                                            </ul>
+                                            @if($setting->order_type == 'site')
+                                                <ul class="cart-action">
+                                                    {{--                                                <li class="quickview"><a href="#" data-bs-toggle="modal" data-bs-target="#quick-view-modal"><i class="far fa-eye"></i></a></li>--}}
+                                                    <li class="wishlist add-to-cart" data-id="{{$product->id}}"><a href="javascript:void(0)"><i class="far fa-shopping-cart" title="اضف للسلة"></i></a></li>
+                                                    <li class="select-option">
+                                                        <a href="{{route('productDetails',$product->title)}}">
+                                                            عرض التفاصيل
+                                                        </a>
+                                                    </li>
+                                                    <li class="wishlist add-to-wishlist" data-id="{{$product->id}}">
+                                                        <a href="javascript:void(0)" title="اضف للمفضلة">
+                                                            <i class="far fa-heart"></i>
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            @else
+                                                <ul class="cart-action">
+                                                    <li class="select-option">
+                                                        <a href="{{route('productDetails',$product->title)}}">
+                                                            عرض التفاصيل
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            @endif
                                         </div>
                                     </div>
                                     <div class="product-content">
@@ -594,19 +604,29 @@
                                             @endif
                                         </div>
                                         <div class="product-hover-action">
-                                            <ul class="cart-action">
-                                                <li class="wishlist add-to-cart" data-id="{{$pro->id}}"><a href="javascript:void(0)"><i class="far fa-shopping-cart" title="اضف للسلة"></i></a></li>
-                                                <li class="select-option">
-                                                    <a href="{{route('productDetails',$pro->title)}}">
-                                                        عرض التفاصيل
-                                                    </a>
-                                                </li>
-                                                <li class="wishlist add-to-wishlist" data-id="{{$pro->id}}">
-                                                    <a href="javascript:void(0)" title="اضف للمفضلة">
-                                                        <i class="far fa-heart"></i>
-                                                    </a>
-                                                </li>
-                                            </ul>
+                                            @if($setting->order_type == 'site')
+                                                <ul class="cart-action">
+                                                    <li class="wishlist add-to-cart" data-id="{{$pro->id}}"><a href="javascript:void(0)"><i class="far fa-shopping-cart" title="اضف للسلة"></i></a></li>
+                                                    <li class="select-option">
+                                                        <a href="{{route('productDetails',$pro->title)}}">
+                                                            عرض التفاصيل
+                                                        </a>
+                                                    </li>
+                                                    <li class="wishlist add-to-wishlist" data-id="{{$pro->id}}">
+                                                        <a href="javascript:void(0)" title="اضف للمفضلة">
+                                                            <i class="far fa-heart"></i>
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            @else
+                                                <ul class="cart-action">
+                                                    <li class="select-option">
+                                                        <a href="{{route('productDetails',$pro->title)}}">
+                                                            عرض التفاصيل
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            @endif
                                         </div>
                                     </div>
                                 </div>

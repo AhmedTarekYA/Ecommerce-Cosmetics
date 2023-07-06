@@ -38,14 +38,18 @@ Route::get('blogDetails/{id}', [HomeController::class,'blogDetails'])->name('blo
 Route::get('about', [HomeController::class,'about'])->name('about');
 
 
+// site order status should cart not whatsapp
+Route::middleware(['checkSiteStatus'])->group(function () {
 // account
 Route::get('login', [AuthController::class,'index'])->name('login');
 Route::get('register', [AuthController::class, 'register'])->name('register');
 Route::post('userRegister', [AuthController::class, 'userRegister'])->name('userRegister');
 Route::post('postLogin', [AuthController::class, 'postLogin'])->name('postLogin');
+});
 
-Route::group(['middleware' => 'auth:user'], function () {
 
+// should be login and site order status is cart not whatsapp
+Route::middleware(['auth:user', 'checkSiteStatus'])->group(function () {
     Route::get('logout', [AuthController::class, 'logout'])->name('logout');
 
     // profile

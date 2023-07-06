@@ -38,24 +38,24 @@
                             <span class="form-text text-info">مسموح فقط بـ: png, gif, jpeg, jpg, webp</span>
                         </div>
                         <div class="mb-3">
-{{--                            <h4 class="card-title mb-3">طريقة البيع (تحديد الطريقة التي يتبعها العميل لطلب المنتج)</h4>--}}
-{{--                            <div class="row">--}}
-{{--                                <div class="form-check form-radio-primary mb-3 col-lg-6 fs-5">--}}
-{{--                                    <input class="form-check-input" type="radio" name="order_type"--}}
-{{--                                           {{($setting->order_type == 'site') ? 'checked' : ''}} value="site" id="formRadioColor1">--}}
-{{--                                    <label class="form-check-label text-warning" for="formRadioColor1">--}}
-{{--                                        من خلال الموقع (سلة شراء وتسجيل دخول للموقع) <i class="fas fa-globe-africa"></i>--}}
-{{--                                    </label>--}}
-{{--                                </div>--}}
+                            <h4 class="card-title mb-3">طريقة البيع (تحديد الطريقة التي يتبعها العميل لطلب المنتج)</h4>
+                            <div class="row">
+                                <div class="form-check form-radio-primary mb-3 col-lg-6 fs-5">
+                                    <input class="form-check-input" type="radio" name="order_type"
+                                           {{($setting->order_type == 'site') ? 'checked' : ''}} value="site" id="formRadioColor1">
+                                    <label class="form-check-label text-warning" for="formRadioColor1">
+                                        من خلال الموقع (سلة شراء وتسجيل دخول للموقع) <i class="fas fa-globe-africa"></i>
+                                    </label>
+                                </div>
 
-{{--                                <div class="form-check form-radio-success mb-3 col-lg-6 fs-5">--}}
-{{--                                    <input class="form-check-input" type="radio" name="order_type"--}}
-{{--                                           {{($setting->order_type == 'whatsapp') ? 'checked' : ''}} value="site" id="formRadioColor2">--}}
-{{--                                    <label class="form-check-label text-success" for="formRadioColor2">--}}
-{{--                                        واتساب (يقوم المستحدم بالتواصل معك عبر الواتساب)  <i class="fab fa-whatsapp"></i>--}}
-{{--                                    </label>--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
+                                <div class="form-check form-radio-success mb-3 col-lg-6 fs-5">
+                                    <input class="form-check-input" type="radio" name="order_type"
+                                           {{($setting->order_type == 'whatsapp') ? 'checked' : ''}} value="whatsapp" id="formRadioColor2">
+                                    <label class="form-check-label text-success" for="formRadioColor2">
+                                        واتساب (يقوم المستحدم بالتواصل معك عبر الواتساب)  <i class="fab fa-whatsapp"></i>
+                                    </label>
+                                </div>
+                            </div>
                             <div class="row">
                                 <div class="mb-3 col-6">
                                     <label for="phone">هاتف تواصل</label>

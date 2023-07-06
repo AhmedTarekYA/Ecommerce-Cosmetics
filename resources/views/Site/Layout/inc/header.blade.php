@@ -58,68 +58,70 @@
                         {{--                                <i class="flaticon-shopping-cart"></i>--}}
                         {{--                            </a>--}}
                         {{--                        </li>--}}
-                        <li class="wishlist shopping-cart">
-                            <a href="{{route('wishlist')}}" class="wishlist-btn makeLogin" id="wishIcon">
-                                @if (auth('user')->check())
-                                        <?php $count = \App\Models\FavoriteProduct::where('user_id', loggedUser('id'))->count() ?>
-                                    @if($count)
-                                        <span class="wishlist-count">{{$count}}</span>
+                        @if($setting->order_type == 'site')
+                            <li class="wishlist shopping-cart">
+                                <a href="{{route('wishlist')}}" class="wishlist-btn makeLogin" id="wishIcon">
+                                    @if (auth('user')->check())
+                                            <?php $count = \App\Models\FavoriteProduct::where('user_id', loggedUser('id'))->count() ?>
+                                        @if($count)
+                                            <span class="wishlist-count">{{$count}}</span>
+                                        @endif
                                     @endif
-                                @endif
-                                <i class="flaticon-heart"></i>
-                            </a>
-                        </li>
-                        <li class="shopping-cart">
-                            <a href="#" class="cart-dropdown-btn makeLogin" id="cartIcon">
-                                @if (auth('user')->check())
-                                        <?php $count = \App\Models\Cart::where('user_id', loggedUser('id'))->count() ?>
-                                    @if($count)
-                                        <span class="cart-count">{{$count}}</span>
+                                    <i class="flaticon-heart"></i>
+                                </a>
+                            </li>
+                            <li class="shopping-cart">
+                                <a href="#" class="cart-dropdown-btn makeLogin" id="cartIcon">
+                                    @if (auth('user')->check())
+                                            <?php $count = \App\Models\Cart::where('user_id', loggedUser('id'))->count() ?>
+                                        @if($count)
+                                            <span class="cart-count">{{$count}}</span>
+                                        @endif
                                     @endif
-                                @endif
-                                <i class="flaticon-shopping-cart"></i>
-                            </a>
-                        </li>
-                        <li class="my-account">
-                            @if (auth('user')->check())
-                                <a href="javascript:void(0)">
-                                    <img class="image-profile-nav" src="{{getUserImage(auth('user')->user()->image)}}"
-                                         alt="{{auth('user')->user()->name}}">
-                                    {{--                                    <span class="name-profile-nav"--}}
-                                    {{--                                          style="color: black !important;">{{auth('user')->user()->name}}</span>--}}
+                                    <i class="flaticon-shopping-cart"></i>
                                 </a>
-                                <div class="my-account-dropdown">
-                                    <span class="title name-of-user">{{auth('user')->user()->name}}</span>
-                                    <ul>
-                                        <li>
-                                            <a href="{{route('profile')}}">
-                                                بيانات حسابي
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="{{route('logout')}}" class="text-danger">
-                                                تسجيل الخروج <i class="fa fa-sign-out-alt"></i>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            @else
-                                <a href="javascript:void(0)" class="makeLogin">
-                                    <i class="flaticon-person"></i>
-                                </a>
-                                <div class="my-account-dropdown">
-                                    <ul>
-                                        <li>
-                                            <a href="{{route('register')}}">انشاء حساب</a>
-                                        </li>
-                                        <li>
-                                            <a href="{{route('login')}}" style="border-bottom: 0px">تسجيل الدخول</a>
-                                        </li>
-                                    </ul>
-                                </div>
+                            </li>
+                            <li class="my-account">
+                                @if (auth('user')->check())
+                                    <a href="javascript:void(0)">
+                                        <img class="image-profile-nav" src="{{getUserImage(auth('user')->user()->image)}}"
+                                             alt="{{auth('user')->user()->name}}">
+                                        {{--                                    <span class="name-profile-nav"--}}
+                                        {{--                                          style="color: black !important;">{{auth('user')->user()->name}}</span>--}}
+                                    </a>
+                                    <div class="my-account-dropdown">
+                                        <span class="title name-of-user">{{auth('user')->user()->name}}</span>
+                                        <ul>
+                                            <li>
+                                                <a href="{{route('profile')}}">
+                                                    بيانات حسابي
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="{{route('logout')}}" class="text-danger">
+                                                    تسجيل الخروج <i class="fa fa-sign-out-alt"></i>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                @else
+                                    <a href="javascript:void(0)" class="makeLogin">
+                                        <i class="flaticon-person"></i>
+                                    </a>
+                                    <div class="my-account-dropdown">
+                                        <ul>
+                                            <li>
+                                                <a href="{{route('register')}}">انشاء حساب</a>
+                                            </li>
+                                            <li>
+                                                <a href="{{route('login')}}" style="border-bottom: 0px">تسجيل الدخول</a>
+                                            </li>
+                                        </ul>
+                                    </div>
 
-                            @endif
-                        </li>
+                                @endif
+                            </li>
+                        @endif
                         <li class="axil-mobile-toggle">
                             <button class="menu-btn mobile-nav-toggler">
                                 <i class="flaticon-menu-2"></i>

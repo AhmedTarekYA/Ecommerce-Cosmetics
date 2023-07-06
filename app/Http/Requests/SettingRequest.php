@@ -34,7 +34,7 @@ class SettingRequest extends FormRequest
             'gmail' => "required|email",
             'whatsapp' => "required",
             'phone' => "required",
-//            'order_type' => "required|in:whatsapp,site",
+            'order_type' => "required|in:whatsapp,site",
         ];
     }
 
