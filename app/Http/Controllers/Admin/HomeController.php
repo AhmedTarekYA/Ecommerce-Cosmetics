@@ -14,29 +14,35 @@ class HomeController extends Controller
         $currentMonth = Carbon::now()->month;
         $currentYear = Carbon::now()->year;
 
-// Get the number of users who registered this month
-        $currentMonthUserCount = User::whereMonth('created_at', $currentMonth)
+// Get the price of completed orders this month
+        $currentMonthSalePrice = Order::whereMonth('created_at', $currentMonth)
             ->whereYear('created_at', $currentYear)
-            ->count();
+            ->where('status','completed')
+            ->sum('total_price');
 
-// Get the number of users who registered last month
+// Get the price of completed orders last month
         $lastMonth = Carbon::now()->subMonth();
-        $lastMonthUserCount = User::whereMonth('created_at', $lastMonth->month)
+        $lastMonthSalePrice = Order::whereMonth('created_at', $lastMonth->month)
             ->whereYear('created_at', $lastMonth->year)
-            ->count();
+            ->where('status','completed')
+            ->sum('total_price');
 
 // Calculate the percentage change
-        if ($lastMonthUserCount > 0) {
-            $percentageChange = ($currentMonthUserCount - $lastMonthUserCount) / $lastMonthUserCount * 100;
+        if ($lastMonthSalePrice > 0) {
+            $percentageChange = ($currentMonthSalePrice - $lastMonthSalePrice) / $lastMonthSalePrice * 100;
         } else {
-            $percentageChange = 100;
+            $percentageChange = ($currentMonthSalePrice - $lastMonthSalePrice);
         }
 
 // Round the percentage to two decimal places
         $percentageChange = round($percentageChange, 2);
-        $allUserCount = User::count();
+        $monthComplectedOrdersCount = Order::whereMonth('created_at', $currentMonth)
+            ->where('status','completed')->whereYear('created_at', $currentYear)->count();
+        $monthNewOrdersCount = Order::whereMonth('created_at', $currentMonth)
+                ->where('status','new')->whereYear('created_at', $currentYear)->count();
         $dataOfOrder = $this->getOrderStatics();
-        return view('Admin.index',compact('percentageChange','allUserCount','currentMonthUserCount','dataOfOrder'));
+        $usersCount = User::count();
+        return view('Admin.index',compact('usersCount','percentageChange','monthComplectedOrdersCount','monthNewOrdersCount','monthComplectedOrdersCount','currentMonthSalePrice','dataOfOrder'));
     }
 
     public function getOrderStatics(){

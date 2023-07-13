@@ -50,7 +50,7 @@
                             <div class="card">
                                 <div class="card-body">
                                     <div class="d-flex flex-wrap align-items-start">
-                                        <h5 class="card-title mb-3 me-2">العملاء</h5>
+                                        <h5 class="card-title mb-3 me-2">أرباح الشهر الحالي والماضي</h5>
 
                                         <div class="dropdown ms-auto">
                                             <a class="text-muted font-size-16" role="button" data-bs-toggle="dropdown" aria-haspopup="true">
@@ -58,25 +58,25 @@
                                             </a>
 
                                             <div class="dropdown-menu dropdown-menu-end">
-                                                <a class="dropdown-item" href="{{route('users.index')}}">عرض الكل</a>
+                                                <a class="dropdown-item" href="{{route('orders.index')}}">عرض الكل</a>
                                             </div>
                                         </div>
                                     </div>
 
                                     <div class="d-flex flex-wrap">
                                         <div>
-                                            <p class="text-muted mb-1">اجمالي العملاء المسجلين {{$allUserCount}} عميل </p>
-                                            <h4 class="mb-3">نسبة العملاء الجدد هذا الشهر</h4>
+                                            <p class="text-muted mb-1">تم اكتمال عدد  {{$monthComplectedOrdersCount}} طلب هذا الشهر </p>
+                                            <h4 class="mb-3">نسبة الارباح بين الشهرين</h4>
                                             @if($percentageChange > 0)
-                                                <p class="text-success mb-0"><span>{{$percentageChange}} % <i class="mdi mdi-arrow-top-right ms-1"></i> زيادة هذا الشهر</span></p>
+                                                <p class="text-success mb-0"><span> زيادة هذا الشهر بمقدار {{$percentageChange}} % <i class="mdi mdi-arrow-top-right ms-1"></i></span></p>
                                             @elseif($percentageChange < 0)
-                                                <p class="text-danger mb-0"><span>{{$percentageChange}} % <i class="mdi mdi-arrow-bottom-left ms-1"></i> نقص هذا الشهر</span></p>
+                                                <p class="text-danger mb-0"><span> نقص هذا الشهر بمقدار {{$percentageChange}} % <i class="mdi mdi-arrow-bottom-left ms-1"></i></span></p>
                                             @else
-                                                <p class="text-info mb-0"><span>كلا من الشهرين {{$currentMonthUserCount}} عميل جديد </span></p>
+                                                <p class="text-info mb-0"><span>كلا من الشهرين كانت المبيعات {{$currentMonthSalePrice}}  ج.م </span></p>
                                             @endif
                                         </div>
                                         <div class="ms-auto align-self-end">
-                                            <i class="bx bx-group display-4 text-light"></i>
+                                            <i class="bx bx-money display-4 text-light"></i>
                                         </div>
                                     </div>
                                 </div>
@@ -91,8 +91,8 @@
                                     <div class="card-body">
                                         <div class="d-flex">
                                             <div class="flex-grow-1">
-                                                <p class="text-muted fw-medium">الطلبات</p>
-                                                <h4 class="mb-0">{{\App\Models\Order::all()->count()}}</h4>
+                                                <p class="text-muted fw-medium">طلبات الشهر الجديدة</p>
+                                                <h4 class="mb-0">{{$monthNewOrdersCount}}</h4>
                                             </div>
 
                                             <div class="flex-shrink-0 align-self-center">
@@ -111,8 +111,8 @@
                                     <div class="card-body">
                                         <div class="d-flex">
                                             <div class="flex-grow-1">
-                                                <p class="text-muted fw-medium">طلبات الشهر المكتملة</p>
-                                                <h4 class="mb-0">{{\App\Models\Order::whereMonth('created_at',\Illuminate\Support\Carbon::now()->month)->sum('total_price')}} ج.م</h4>
+                                                <p class="text-muted fw-medium">اجمالي العملاء</p>
+                                                <h4 class="mb-0">{{$usersCount }}</h4>
                                             </div>
 
                                             <div class="flex-shrink-0 align-self-center ">
